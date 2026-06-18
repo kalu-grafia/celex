@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CELEX — Centro de Lenguas Extranjeras | UAM Azcapotzalco</title>
+  <meta name="description" content="Centro de Lenguas Extranjeras de la UAM Azcapotzalco. Inglés, Francés y Alemán en modalidades presencial, en línea y autoacceso.">
+
+  <!-- Bootstrap 5.3.8 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons 1.13.1 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <!-- Google Fonts: Inter + Fragment Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Custom CELEX CSS -->
+  <link rel="stylesheet" href="./custom-celex.css">
+</head>
+<body>
+
+<!-- ================================================================
+     INICIO: NAVBAR
+     Topbar institucional + barra de navegación con mega-menús
+     ================================================================ -->
+<header class="celex-header">
+
+  <!-- Barra de logos institucionales -->
+  <div class="celex-topbar">
+    <div class="container-xl">
+      <div class="celex-logo-wrap">
+        <a href="https://www.azc.uam.mx/" class="celex-logo-link" target="_blank" rel="noopener" aria-label="UAM Azcapotzalco">
+          <img src="../celex5/imgs/logos/uam.png" alt="UAM Azcapotzalco" class="celex-logo celex-logo--uam">
+        </a>
+        <span class="celex-logo-sep" aria-hidden="true"></span>
+        <a href="#" class="celex-logo-link" aria-label="División de Ciencias Sociales y Humanidades">
+          <img src="../celex5/imgs/logos/logoCSH.png" alt="División CSH" class="celex-logo celex-logo--division">
+        </a>
+      </div>
+      <a href="/" class="celex-logo-link ms-auto" aria-label="CELEX — Inicio">
+        <img src="../celex5/imgs/logos/CELEX2.jpg" alt="CELEX UAM Azcapotzalco" class="celex-logo celex-logo--celex">
+      </a>
+    </div>
+  </div>
+
+  <!-- Barra de navegación principal -->
+  <div class="celex-navbar-bar">
+    <div class="container-xl">
+      <nav class="navbar navbar-expand-lg" aria-label="Menú principal CELEX">
+
+        <button class="navbar-toggler celex-toggler border-0"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navCelex"
+                aria-controls="navCelex"
+                aria-expanded="false"
+                aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navCelex">
+          <ul class="navbar-nav align-items-lg-stretch">
+
+            <!-- ── 1. MI CELEX ── -->
+            <li class="nav-item dropdown position-static celex-has-mega">
+              <a class="nav-link celex-nav-link dropdown-toggle"
+                 href="#"
+                 role="button"
+                 data-bs-toggle="dropdown"
+                 data-bs-display="static"
+                 data-bs-auto-close="outside"
+                 aria-expanded="false">
+                Mi CELEX
+              </a>
+              <div class="dropdown-menu celex-megamenu">
+                <div class="container-xl">
+                  <div class="row g-4">
+
+                    <!-- Grupo Horarios -->
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-calendar3 me-2"></i>Horarios</p>
+                        <a href="#mod-horarios" class="celex-mega-link">Horario Inglés 26-P</a>
+                        <a href="#mod-horarios" class="celex-mega-link">Horario Francés 26-P</a>
+                        <a href="#mod-horarios" class="celex-mega-link">Horario Alemán 26-P</a>
+                      </div>
+                    </div>
+
+                    <!-- Grupo Trámites -->
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-file-earmark-text me-2"></i>Trámites</p>
+                        <a href="#" class="celex-mega-link">Solicitud de constancias</a>
+                        <a href="#" class="celex-mega-link">Constancia por cursos trimestrales</a>
+                        <a href="#" class="celex-mega-link">Constancia externa de liberación</a>
+                        <a href="#" class="celex-mega-link">Baja y Resello de calificación</a>
+                      </div>
+                    </div>
+
+                    <!-- Grupo Resultados -->
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-clipboard-data me-2"></i>Resultados</p>
+                        <a href="#" class="celex-mega-link">Resultados exámenes CL y Certificación</a>
+                        <a href="#" class="celex-mega-link">Distribución de matrículas</a>
+                        <a href="#" class="celex-mega-link">¿Cómo liberar el requisito?</a>
+                      </div>
+                    </div>
+
+                    <!-- Featured card -->
+                    <div class="col-lg-3">
+                      <div class="celex-mega-featured">
+                        <p class="celex-mega-featured__tag"><i class="bi bi-star-fill me-1"></i>Acceso rápido</p>
+                        <p class="celex-mega-featured__title">Tu espacio académico en el CELEX</p>
+                        <p class="celex-mega-featured__desc">Gestiona trámites, descarga horarios y consulta tus resultados desde un solo lugar.</p>
+                        <a href="#" class="celex-btn celex-btn--yellow w-100 justify-content-center">
+                          Ingresar <span class="celex-arrow">→</span>
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- ── 2. IDIOMAS ── -->
+            <li class="nav-item dropdown position-static celex-has-mega">
+              <a class="nav-link celex-nav-link dropdown-toggle"
+                 href="#"
+                 role="button"
+                 data-bs-toggle="dropdown"
+                 data-bs-display="static"
+                 data-bs-auto-close="outside"
+                 aria-expanded="false">
+                Idiomas
+              </a>
+              <div class="dropdown-menu celex-megamenu">
+                <div class="container-xl">
+                  <div class="row g-4">
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-translate me-2"></i>Lenguas disponibles</p>
+                        <a href="#mod-idiomas" class="celex-mega-link">🇬🇧 &nbsp;Inglés</a>
+                        <a href="#mod-idiomas" class="celex-mega-link">🇫🇷 &nbsp;Francés</a>
+                        <a href="#mod-idiomas" class="celex-mega-link">🇩🇪 &nbsp;Alemán</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-layers me-2"></i>Modalidades</p>
+                        <a href="#" class="celex-mega-link">Cursos presenciales</a>
+                        <a href="#" class="celex-mega-link">Curso en línea</a>
+                        <a href="#" class="celex-mega-link">Autoacceso</a>
+                        <a href="#" class="celex-mega-link">Cursos Sabatinos</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-journal-bookmark me-2"></i>Preparación</p>
+                        <a href="#" class="celex-mega-link">Curso Propedéutico de Inglés</a>
+                        <a href="#mod-recursos" class="celex-mega-link">Centro de Recursos</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-featured">
+                        <p class="celex-mega-featured__tag"><i class="bi bi-award me-1"></i>Certificaciones</p>
+                        <p class="celex-mega-featured__title">Certifica tu nivel con estándares internacionales</p>
+                        <p class="celex-mega-featured__desc">TOEFL, DELF, Goethe — el CELEX te prepara para los exámenes más reconocidos.</p>
+                        <a href="#mod-alertas" class="celex-btn celex-btn--yellow w-100 justify-content-center">
+                          Ver convocatorias <span class="celex-arrow">→</span>
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- ── 3. CONVOCATORIAS (con punto rojo) ── -->
+            <li class="nav-item dropdown position-static celex-has-mega">
+              <a class="nav-link celex-nav-link dropdown-toggle d-flex align-items-center gap-2"
+                 href="#"
+                 role="button"
+                 data-bs-toggle="dropdown"
+                 data-bs-display="static"
+                 data-bs-auto-close="outside"
+                 aria-expanded="false">
+                Convocatorias
+                <span class="celex-nav-alert-dot" aria-label="Convocatorias activas"></span>
+              </a>
+              <div class="dropdown-menu celex-megamenu">
+                <div class="container-xl">
+                  <div class="row g-4">
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-door-open me-2"></i>Ingreso</p>
+                        <a href="#" class="celex-mega-link">Convocatoria de ingreso a Lenguas Extranjeras</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-patch-check me-2"></i>Exámenes</p>
+                        <a href="#" class="celex-mega-link">Certificación y CL — Inglés</a>
+                        <a href="#" class="celex-mega-link">Certificación y CL — Francés</a>
+                        <a href="#" class="celex-mega-link">Certificación y CL — Alemán</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-stars me-2"></i>Cursos especiales</p>
+                        <a href="#" class="celex-mega-link">Inglés Intensivo en Línea A2</a>
+                        <a href="#" class="celex-mega-link">Advanced Reading Through Pop Culture</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-featured" style="border-top: 3px solid var(--celex-red);">
+                        <p class="celex-mega-featured__tag" style="color: var(--celex-red);">
+                          <i class="bi bi-exclamation-circle me-1"></i>Vigente ahora
+                        </p>
+                        <p class="celex-mega-featured__title">Inscripciones abiertas Trimestre 26-O</p>
+                        <p class="celex-mega-featured__desc">Cierre de registro: 25 de junio 2026. No dejes tu lugar para después.</p>
+                        <a href="#mod-alertas" class="celex-btn celex-btn--yellow w-100 justify-content-center">
+                          Ver convocatoria <span class="celex-arrow">→</span>
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- ── 4. COMUNIDAD ── -->
+            <li class="nav-item dropdown position-static celex-has-mega">
+              <a class="nav-link celex-nav-link dropdown-toggle"
+                 href="#"
+                 role="button"
+                 data-bs-toggle="dropdown"
+                 data-bs-display="static"
+                 data-bs-auto-close="outside"
+                 aria-expanded="false">
+                Comunidad
+              </a>
+              <div class="dropdown-menu celex-megamenu">
+                <div class="container-xl">
+                  <div class="row g-4">
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-person-badge me-2"></i>Planta docente</p>
+                        <a href="#mod-planta" class="celex-mega-link">Profesores de Inglés</a>
+                        <a href="#mod-planta" class="celex-mega-link">Profesores de Francés</a>
+                        <a href="#mod-planta" class="celex-mega-link">Profesores de Alemán</a>
+                        <a href="#mod-planta" class="celex-mega-link">Profesores Temporales</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-search me-2"></i>Investigación</p>
+                        <a href="#" class="celex-mega-link">Proyectos de Investigación</a>
+                        <a href="#" class="celex-mega-link">ReLingüística Aplicada</a>
+                      </div>
+                      <div class="celex-mega-group mt-3">
+                        <p class="celex-mega-heading"><i class="bi bi-book me-2"></i>Publicaciones</p>
+                        <a href="#" class="celex-mega-link">Memorias del Coloquio de Lenguas</a>
+                        <a href="#" class="celex-mega-link">Culturas en confluencia 3 (PDF)</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-hand-thumbs-up me-2"></i>Participación</p>
+                        <a href="#" class="celex-mega-link">Servicio Social</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-featured">
+                        <p class="celex-mega-featured__tag"><i class="bi bi-people me-1"></i>Comunidad CELEX</p>
+                        <p class="celex-mega-featured__title">Conoce a la planta académica que hace posible el CELEX</p>
+                        <p class="celex-mega-featured__desc">Docentes especializados con formación internacional en inglés, francés y alemán.</p>
+                        <a href="#mod-planta" class="celex-btn celex-btn--yellow w-100 justify-content-center">
+                          Ver planta <span class="celex-arrow">→</span>
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- ── 5. CELEX ── -->
+            <li class="nav-item dropdown position-static celex-has-mega">
+              <a class="nav-link celex-nav-link dropdown-toggle"
+                 href="#"
+                 role="button"
+                 data-bs-toggle="dropdown"
+                 data-bs-display="static"
+                 data-bs-auto-close="outside"
+                 aria-expanded="false">
+                CELEX
+              </a>
+              <div class="dropdown-menu celex-megamenu">
+                <div class="container-xl">
+                  <div class="row g-4">
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-building me-2"></i>Quiénes somos</p>
+                        <a href="#" class="celex-mega-link">Misión y objetivos</a>
+                        <a href="#" class="celex-mega-link">Directorio</a>
+                        <a href="#" class="celex-mega-link">Historia del CELEX</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-geo-alt me-2"></i>Contacto</p>
+                        <a href="#mod-footer" class="celex-mega-link">Ubicación y horarios de atención</a>
+                        <a href="#mod-footer" class="celex-mega-link">Directorio de contactos</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-group">
+                        <p class="celex-mega-heading"><i class="bi bi-shield-check me-2"></i>Normatividad</p>
+                        <a href="#" class="celex-mega-link">Aviso de Privacidad</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                      <div class="celex-mega-featured">
+                        <p class="celex-mega-featured__tag"><i class="bi bi-info-circle me-1"></i>Información institucional</p>
+                        <p class="celex-mega-featured__title">40 años formando puentes entre culturas</p>
+                        <p class="celex-mega-featured__desc">Conoce la historia, misión y el equipo que impulsa al CELEX de la UAM Azcapotzalco.</p>
+                        <a href="#" class="celex-btn celex-btn--yellow w-100 justify-content-center">
+                          Conocer más <span class="celex-arrow">→</span>
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+          </ul><!-- /navbar-nav -->
+
+          <!-- CTA Ingresar (desktop) -->
+          <a href="#" class="celex-btn-ingresar d-none d-lg-inline-flex ms-auto">
+            Ingresar <i class="bi bi-arrow-right-short fs-5"></i>
+          </a>
+          <!-- CTA Ingresar (mobile) -->
+          <a href="#" class="celex-btn celex-btn--dark w-100 mx-3 my-2 justify-content-center d-lg-none" style="max-width: calc(100% - 2rem);">
+            Ingresar <i class="bi bi-arrow-right-short fs-5"></i>
+          </a>
+
+        </div><!-- /collapse -->
+      </nav>
+    </div>
+  </div><!-- /celex-navbar-bar -->
+
+</header>
+<!-- FIN: NAVBAR -->
+
+
+<!-- ================================================================
+     INICIO: HERO
+     Fondo negro, headline masivo, stats, carousel de anuncios
+     ================================================================ -->
+<section id="mod-hero" class="celex-hero" aria-label="Bienvenida CELEX">
+  <div class="container-xl w-100">
+    <div class="row g-4 g-xl-5 align-items-center">
+
+      <!-- COLUMNA IZQUIERDA: copy + stats -->
+      <div class="col-lg-7">
+
+        <p class="celex-hero__label ca-fade-in">
+          <span class="celex-hero__label-pulse" aria-hidden="true"></span>
+          Centro de Lenguas Extranjeras · UAM Azcapotzalco
+        </p>
+
+        <h1 class="celex-hero__headline ca-fade-up ca-d1">
+          Aprende.<br>
+          Certifícate.<br>
+          <span class="celex-hero__headline-accent">Trasciende.</span>
+        </h1>
+
+        <p class="celex-hero__subtitle ca-fade-up ca-d2">
+          Inglés, Francés y Alemán con nivel académico de excelencia.
+          Programas certificados para toda la comunidad UAM en modalidades
+          presencial, en línea y autoacceso.
+        </p>
+
+        <hr class="celex-hero__rule ca-fade-in ca-d3" aria-hidden="true">
+
+        <div class="celex-stats-row ca-fade-up ca-d4" aria-label="Cifras del CELEX">
+          <div class="celex-stat">
+            <span class="celex-stat__number">3</span>
+            <span class="celex-stat__label">Idiomas impartidos</span>
+          </div>
+          <div class="celex-stat">
+            <span class="celex-stat__number">6+</span>
+            <span class="celex-stat__label">Modalidades de curso</span>
+          </div>
+          <div class="celex-stat">
+            <span class="celex-stat__number">40+</span>
+            <span class="celex-stat__label">Profesores especializados</span>
+          </div>
+          <div class="celex-stat">
+            <span class="celex-stat__number">UAM</span>
+            <span class="celex-stat__label">Azcapotzalco</span>
+          </div>
+        </div>
+
+      </div><!-- /col izquierda -->
+
+      <!-- COLUMNA DERECHA: carousel -->
+      <div class="col-lg-5 ca-fade-left ca-d2">
+        <div class="celex-carousel-wrap">
+          <div id="heroCarousel"
+               class="carousel slide"
+               data-bs-ride="carousel"
+               data-bs-interval="4500">
+
+            <div class="carousel-indicators celex-carousel-dots">
+              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Anuncio 1"></button>
+              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Anuncio 2"></button>
+              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Anuncio 3"></button>
+              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Anuncio 4"></button>
+            </div>
+
+            <div class="carousel-inner">
+
+              <div class="carousel-item active">
+                <div class="celex-slide" style="background-image: url('../Celex/imgs/backgrounds/bar1.jpeg');">
+                  <div class="celex-slide__overlay" aria-hidden="true"></div>
+                  <div class="celex-slide__content">
+                    <span class="celex-slide__badge">Convocatoria Abierta</span>
+                    <h2 class="celex-slide__title">Cursos de Inglés<br>Trimestre 26-Otoño</h2>
+                    <p class="celex-slide__subtitle">Inscripciones abiertas · Cierre 25 jun 2026</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="celex-slide" style="background-image: url('../Celex/imgs/backgrounds/bar3.jpeg');">
+                  <div class="celex-slide__overlay" aria-hidden="true"></div>
+                  <div class="celex-slide__content">
+                    <span class="celex-slide__badge">Nouvelle Convocation</span>
+                    <h2 class="celex-slide__title">Cours de Français<br>Trimestre 26-Otoño</h2>
+                    <p class="celex-slide__subtitle">Modalité présentielle · Niveaux A1–B2</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="celex-slide" style="background-image: url('../Celex/imgs/backgrounds/bar5.jpeg');">
+                  <div class="celex-slide__overlay" aria-hidden="true"></div>
+                  <div class="celex-slide__content">
+                    <span class="celex-slide__badge">Neue Ausschreibung</span>
+                    <h2 class="celex-slide__title">Deutschkurse<br>Trimestre 26-Otoño</h2>
+                    <p class="celex-slide__subtitle">Präsenz · Niveaustufen A1–B1</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="celex-slide" style="background-image: url('../Celex/imgs/backgrounds/bar7.jpeg');">
+                  <div class="celex-slide__overlay" aria-hidden="true"></div>
+                  <div class="celex-slide__content">
+                    <span class="celex-slide__badge">Centro de Recursos</span>
+                    <h2 class="celex-slide__title">Autoacceso &amp;<br>Certificaciones</h2>
+                    <p class="celex-slide__subtitle">Aprende a tu ritmo · Materiales disponibles</p>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /carousel-inner -->
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Anterior">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Siguiente">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+
+          </div><!-- /carousel -->
+        </div><!-- /carousel-wrap -->
+      </div><!-- /col derecha -->
+
+    </div><!-- /row -->
+  </div><!-- /container -->
+
+  <!-- Indicador de scroll -->
+  <a href="#mod-marquee" class="celex-hero__scroll" aria-label="Desplazar hacia abajo">
+    <span class="celex-hero__scroll-line"></span>
+    <span class="celex-hero__scroll-text">Scroll</span>
+  </a>
+
+</section>
+<!-- FIN: HERO -->
+
+
+<!-- ================================================================
+     INICIO: MARQUEE BAR
+     Franja amarilla con texto animado — estilo Denzil
+     ================================================================ -->
+<div id="mod-marquee" class="celex-marquee-bar" aria-hidden="true">
+  <div class="celex-marquee-track">
+    <!-- Primera copia -->
+    <span class="celex-marquee-item">Inglés</span>
+    <span class="celex-marquee-item">Francés</span>
+    <span class="celex-marquee-item">Alemán</span>
+    <span class="celex-marquee-item">CELEX UAM-A</span>
+    <span class="celex-marquee-item">Presencial</span>
+    <span class="celex-marquee-item">En línea</span>
+    <span class="celex-marquee-item">Autoacceso</span>
+    <span class="celex-marquee-item">Certificación internacional</span>
+    <span class="celex-marquee-item">Cursos Sabatinos</span>
+    <span class="celex-marquee-item">MCER · A1 – C1</span>
+    <!-- Segunda copia (loop seamless) -->
+    <span class="celex-marquee-item">Inglés</span>
+    <span class="celex-marquee-item">Francés</span>
+    <span class="celex-marquee-item">Alemán</span>
+    <span class="celex-marquee-item">CELEX UAM-A</span>
+    <span class="celex-marquee-item">Presencial</span>
+    <span class="celex-marquee-item">En línea</span>
+    <span class="celex-marquee-item">Autoacceso</span>
+    <span class="celex-marquee-item">Certificación internacional</span>
+    <span class="celex-marquee-item">Cursos Sabatinos</span>
+    <span class="celex-marquee-item">MCER · A1 – C1</span>
+  </div>
+</div>
+<!-- FIN: MARQUEE BAR -->
+
+
+<!-- ================================================================
+     INICIO: ALERTAS & CONVOCATORIAS
+     Fondo gris claro · Tarjetas con acento rojo + timeline
+     ================================================================ -->
+<section id="mod-alertas" class="celex-section celex-section--light">
+  <div class="container-xl">
+
+    <div class="row mb-5 align-items-end">
+      <div class="col-lg-7">
+        <p class="celex-eyebrow ca-fade-in">Actualidad</p>
+        <h2 class="celex-section-title ca-fade-up ca-d1">Alertas &amp; Convocatorias</h2>
+        <p class="mt-3 mb-0 ca-fade-up ca-d2" style="font-size:.9rem;color:#777;max-width:480px;line-height:1.75;">
+          Mantente al día con las convocatorias vigentes, fechas de examen e inicio de cursos.
+        </p>
+      </div>
+      <div class="col-lg-5 text-lg-end mt-3 mt-lg-0 ca-fade-in ca-d3">
+        <a href="#" class="celex-btn celex-btn--dark">
+          Todas las convocatorias <span class="celex-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="row g-4 g-lg-5">
+
+      <!-- COL 1: tarjetas de convocatoria -->
+      <div class="col-lg-7">
+
+        <article class="celex-alerta-card ca-fade-up" aria-label="Convocatoria Trimestre 26-O">
+          <div class="celex-alerta-date">
+            <div class="celex-alerta-date__box">
+              <span class="celex-alerta-date__num">25</span>
+              <span class="celex-alerta-date__month">Jun</span>
+            </div>
+            <span class="celex-alerta-date__cat">Conv.</span>
+          </div>
+          <div>
+            <h3 class="celex-alerta-body__title">Inscripciones Trimestre 26-Otoño</h3>
+            <p class="celex-alerta-body__desc">Abierto el proceso de inscripción para los cursos de Inglés, Francés y Alemán en modalidades presencial y en línea. Cierre de registro: 25 de junio de 2026.</p>
+            <a href="#" class="celex-alerta-body__cta">Ver convocatoria <span class="celex-arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="celex-alerta-card ca-fade-up ca-d1" aria-label="Exámenes de comprensión de lectura">
+          <div class="celex-alerta-date">
+            <div class="celex-alerta-date__box">
+              <span class="celex-alerta-date__num">15</span>
+              <span class="celex-alerta-date__month">Jul</span>
+            </div>
+            <span class="celex-alerta-date__cat">Examen</span>
+          </div>
+          <div>
+            <h3 class="celex-alerta-body__title">Exámenes de Comprensión de Lectura</h3>
+            <p class="celex-alerta-body__desc">Convocatoria para exámenes de liberación del requisito de idioma. Consulta las fechas, requisitos y proceso de registro en la coordinación del CELEX.</p>
+            <a href="#" class="celex-alerta-body__cta">Ver detalles <span class="celex-arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="celex-alerta-card ca-fade-up ca-d2" aria-label="Curso intensivo de inglés">
+          <div class="celex-alerta-date">
+            <div class="celex-alerta-date__box">
+              <span class="celex-alerta-date__num">30</span>
+              <span class="celex-alerta-date__month">Jun</span>
+            </div>
+            <span class="celex-alerta-date__cat">Curso</span>
+          </div>
+          <div>
+            <h3 class="celex-alerta-body__title">Curso Intensivo de Inglés A2 — Intertrimestral</h3>
+            <p class="celex-alerta-body__desc">Modalidad en línea. Programa intertrimestral 26-I con capacidad limitada. Ideal para avanzar de nivel en menos tiempo.</p>
+            <a href="#" class="celex-alerta-body__cta">Inscribirse <span class="celex-arrow">→</span></a>
+          </div>
+        </article>
+
+      </div><!-- /col convocatorias -->
+
+      <!-- COL 2: mini-timeline de agenda -->
+      <div class="col-lg-5">
+        <div class="celex-timeline ca-fade-right ca-d1" aria-label="Agenda trimestral CELEX">
+          <p class="celex-timeline__head">
+            <i class="bi bi-calendar3"></i>&nbsp; Agenda trimestral
+          </p>
+
+          <div class="celex-timeline__item">
+            <div class="celex-timeline__dot" aria-hidden="true"></div>
+            <div>
+              <time class="celex-timeline__date" datetime="2026-06-25">25 jun 2026</time>
+              <p class="celex-timeline__text">Cierre de inscripciones Trimestre 26-Otoño</p>
+            </div>
+          </div>
+
+          <div class="celex-timeline__item">
+            <div class="celex-timeline__dot" aria-hidden="true"></div>
+            <div>
+              <time class="celex-timeline__date" datetime="2026-07-07">07 jul 2026</time>
+              <p class="celex-timeline__text">Inicio de clases Trimestre 26-Otoño</p>
+            </div>
+          </div>
+
+          <div class="celex-timeline__item">
+            <div class="celex-timeline__dot" aria-hidden="true"></div>
+            <div>
+              <time class="celex-timeline__date" datetime="2026-07-15">15 jul 2026</time>
+              <p class="celex-timeline__text">Exámenes de comprensión de lectura (Inglés, Francés, Alemán)</p>
+            </div>
+          </div>
+
+          <div class="celex-timeline__item">
+            <div class="celex-timeline__dot" aria-hidden="true"></div>
+            <div>
+              <time class="celex-timeline__date" datetime="2026-08-10">10 ago 2026</time>
+              <p class="celex-timeline__text">Período vacacional de verano UAM</p>
+            </div>
+          </div>
+
+          <div class="celex-timeline__item celex-timeline__item--last">
+            <div class="celex-timeline__dot" aria-hidden="true"></div>
+            <div>
+              <time class="celex-timeline__date" datetime="2026-09-25">25 sep 2026</time>
+              <p class="celex-timeline__text">Fin de Trimestre 26-Otoño · Evaluaciones finales</p>
+            </div>
+          </div>
+
+        </div><!-- /timeline -->
+      </div><!-- /col timeline -->
+
+    </div><!-- /row -->
+  </div><!-- /container -->
+</section>
+<!-- FIN: ALERTAS -->
+
+
+<!-- ================================================================
+     INICIO: OFERTA DE IDIOMAS
+     Fondo blanco · 3 cards con hover accent top-border
+     ================================================================ -->
+<section id="mod-idiomas" class="celex-section">
+  <div class="container-xl">
+
+    <div class="row mb-5 align-items-end">
+      <div class="col-lg-7">
+        <p class="celex-eyebrow ca-fade-in">Oferta académica</p>
+        <h2 class="celex-section-title ca-fade-up ca-d1">Idiomas que ofrecemos</h2>
+        <p class="mt-3 mb-0 ca-fade-up ca-d2" style="font-size:.9rem;color:#777;max-width:480px;line-height:1.75;">
+          Programas estructurados por niveles según el Marco Común Europeo de Referencia (MCER), con enfoque comunicativo y cultural.
+        </p>
+      </div>
+      <div class="col-lg-5 text-lg-end mt-3 mt-lg-0 ca-fade-in ca-d3">
+        <a href="#mod-horarios" class="celex-btn celex-btn--ghost">
+          Ver horarios <span class="celex-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Inglés -->
+      <div class="col-lg-4 ca-fade-up ca-d1">
+        <div class="celex-idioma-card">
+          <div class="celex-idioma-card__flag" role="img" aria-label="Bandera Reino Unido">🇬🇧</div>
+          <h3 class="celex-idioma-card__name">Inglés</h3>
+          <p class="celex-idioma-card__cefr">A1 · A2 · B1 · B2 · C1</p>
+          <ul class="celex-idioma-card__levels" aria-label="Niveles de inglés disponibles">
+            <li>A1 · Básico</li>
+            <li>A2 · Elemental</li>
+            <li>B1 · Intermedio</li>
+            <li>B2 · Intermedio alto</li>
+            <li>C1 · Avanzado</li>
+          </ul>
+          <div class="celex-idioma-card__badges">
+            <span class="celex-badge celex-badge--dark">Presencial</span>
+            <span class="celex-badge celex-badge--outline">En línea</span>
+            <span class="celex-badge celex-badge--outline">Autoacceso</span>
+          </div>
+          <a href="#" class="celex-btn celex-btn--yellow">Ver cursos <span class="celex-arrow">→</span></a>
+        </div>
+      </div>
+
+      <!-- Francés -->
+      <div class="col-lg-4 ca-fade-up ca-d2">
+        <div class="celex-idioma-card">
+          <div class="celex-idioma-card__flag" role="img" aria-label="Bandera Francia">🇫🇷</div>
+          <h3 class="celex-idioma-card__name">Francés</h3>
+          <p class="celex-idioma-card__cefr">A1 · A2 · B1 · B2</p>
+          <ul class="celex-idioma-card__levels" aria-label="Niveles de francés disponibles">
+            <li>A1 · Básico</li>
+            <li>A2 · Elemental</li>
+            <li>B1 · Intermedio</li>
+            <li>B2 · Intermedio alto</li>
+          </ul>
+          <div class="celex-idioma-card__badges">
+            <span class="celex-badge celex-badge--dark">Presencial</span>
+            <span class="celex-badge celex-badge--outline">Autoacceso</span>
+          </div>
+          <a href="#" class="celex-btn celex-btn--yellow">Ver cursos <span class="celex-arrow">→</span></a>
+        </div>
+      </div>
+
+      <!-- Alemán -->
+      <div class="col-lg-4 ca-fade-up ca-d3">
+        <div class="celex-idioma-card">
+          <div class="celex-idioma-card__flag" role="img" aria-label="Bandera Alemania">🇩🇪</div>
+          <h3 class="celex-idioma-card__name">Alemán</h3>
+          <p class="celex-idioma-card__cefr">A1 · A2 · B1</p>
+          <ul class="celex-idioma-card__levels" aria-label="Niveles de alemán disponibles">
+            <li>A1 · Básico</li>
+            <li>A2 · Elemental</li>
+            <li>B1 · Intermedio</li>
+          </ul>
+          <div class="celex-idioma-card__badges">
+            <span class="celex-badge celex-badge--dark">Presencial</span>
+            <span class="celex-badge celex-badge--outline">Autoacceso</span>
+          </div>
+          <a href="#" class="celex-btn celex-btn--yellow">Ver cursos <span class="celex-arrow">→</span></a>
+        </div>
+      </div>
+
+    </div><!-- /row idiomas -->
+  </div><!-- /container -->
+</section>
+<!-- FIN: IDIOMAS -->
+
+
+<!-- ================================================================
+     INICIO: HORARIOS
+     Fondo gris claro · Acceso rápido a horarios del trimestre
+     ================================================================ -->
+<section id="mod-horarios" class="celex-section celex-section--light">
+  <div class="container-xl">
+
+    <div class="row mb-5">
+      <div class="col-lg-6">
+        <p class="celex-eyebrow ca-fade-in">Trimestre vigente</p>
+        <h2 class="celex-section-title ca-fade-up ca-d1">Horarios 26-P</h2>
+        <p class="mt-3 mb-0 ca-fade-up ca-d2" style="font-size:.9rem;color:#777;line-height:1.75;">
+          Descarga los horarios del Trimestre 26-Primavera para cada idioma y modalidad.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-lg-4 ca-fade-up ca-d1">
+        <div class="celex-horario-card">
+          <span class="celex-horario-card__num" aria-hidden="true">01</span>
+          <div class="celex-horario-card__icon" aria-hidden="true">📅</div>
+          <h3 class="celex-horario-card__name">Inglés 26-P</h3>
+          <p class="celex-horario-card__desc">Todos los grupos y modalidades del curso de Inglés para el trimestre vigente. Presencial y en línea.</p>
+          <span class="celex-badge celex-badge--yellow-light mb-3 d-inline-flex align-items-center gap-1">
+            <i class="bi bi-check-circle-fill" style="font-size:.65rem;"></i> Trimestre vigente
+          </span>
+          <a href="#" class="celex-btn celex-btn--dark w-100">
+            <i class="bi bi-download me-1"></i> Descargar horario
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 ca-fade-up ca-d2">
+        <div class="celex-horario-card">
+          <span class="celex-horario-card__num" aria-hidden="true">02</span>
+          <div class="celex-horario-card__icon" aria-hidden="true">📅</div>
+          <h3 class="celex-horario-card__name">Francés 26-P</h3>
+          <p class="celex-horario-card__desc">Grupos y horarios del curso de Francés disponibles para el trimestre en curso. Modalidad presencial.</p>
+          <span class="celex-badge celex-badge--yellow-light mb-3 d-inline-flex align-items-center gap-1">
+            <i class="bi bi-check-circle-fill" style="font-size:.65rem;"></i> Trimestre vigente
+          </span>
+          <a href="#" class="celex-btn celex-btn--dark w-100">
+            <i class="bi bi-download me-1"></i> Descargar horario
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 ca-fade-up ca-d3">
+        <div class="celex-horario-card">
+          <span class="celex-horario-card__num" aria-hidden="true">03</span>
+          <div class="celex-horario-card__icon" aria-hidden="true">📅</div>
+          <h3 class="celex-horario-card__name">Alemán 26-P</h3>
+          <p class="celex-horario-card__desc">Todos los grupos del curso de Alemán con horarios completos para el trimestre. Modalidad presencial.</p>
+          <span class="celex-badge celex-badge--yellow-light mb-3 d-inline-flex align-items-center gap-1">
+            <i class="bi bi-check-circle-fill" style="font-size:.65rem;"></i> Trimestre vigente
+          </span>
+          <a href="#" class="celex-btn celex-btn--dark w-100">
+            <i class="bi bi-download me-1"></i> Descargar horario
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /row -->
+  </div><!-- /container -->
+</section>
+<!-- FIN: HORARIOS -->
+
+
+<!-- ================================================================
+     INICIO: PLANTA ACADÉMICA
+     Fondo blanco · Grid 2×2 profesores + blockquote institucional
+     ================================================================ -->
+<section id="mod-planta" class="celex-section">
+  <div class="container-xl">
+    <div class="row g-5 g-lg-6 align-items-start">
+
+      <!-- COLUMNA 1: profesores -->
+      <div class="col-lg-6">
+        <p class="celex-eyebrow ca-fade-in">Quiénes enseñan</p>
+        <h2 class="celex-section-title mb-4 ca-fade-up ca-d1">Planta Académica</h2>
+
+        <div class="row row-cols-2 g-3">
+          <div class="col ca-fade-up ca-d1">
+            <div class="celex-teacher-card">
+              <div class="celex-teacher-card__avatar" aria-label="Docente de Inglés">
+                <i class="bi bi-person-fill text-white fs-3"></i>
+              </div>
+              <span class="celex-teacher-card__name">Prof. A. González</span>
+              <span class="celex-teacher-card__lang">Inglés</span>
+              <span class="celex-teacher-card__spec">Niveles B1–C1</span>
+            </div>
+          </div>
+          <div class="col ca-fade-up ca-d2">
+            <div class="celex-teacher-card">
+              <div class="celex-teacher-card__avatar" aria-label="Docente de Francés">
+                <i class="bi bi-person-fill text-white fs-3"></i>
+              </div>
+              <span class="celex-teacher-card__name">Prof. M. Durand</span>
+              <span class="celex-teacher-card__lang">Francés</span>
+              <span class="celex-teacher-card__spec">Niveles A1–B2</span>
+            </div>
+          </div>
+          <div class="col ca-fade-up ca-d3">
+            <div class="celex-teacher-card">
+              <div class="celex-teacher-card__avatar" aria-label="Docente de Alemán">
+                <i class="bi bi-person-fill text-white fs-3"></i>
+              </div>
+              <span class="celex-teacher-card__name">Prof. K. Müller</span>
+              <span class="celex-teacher-card__lang">Alemán</span>
+              <span class="celex-teacher-card__spec">Niveles A1–B1</span>
+            </div>
+          </div>
+          <div class="col ca-fade-up ca-d4">
+            <div class="celex-teacher-card">
+              <div class="celex-teacher-card__avatar" aria-label="Docente de Inglés">
+                <i class="bi bi-person-fill text-white fs-3"></i>
+              </div>
+              <span class="celex-teacher-card__name">Prof. S. Martínez</span>
+              <span class="celex-teacher-card__lang">Inglés</span>
+              <span class="celex-teacher-card__spec">Niveles A1–B2</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 ca-fade-up ca-d5">
+          <a href="#" class="celex-btn celex-btn--dark">
+            <i class="bi bi-people me-2"></i>Ver planta completa <span class="celex-arrow">→</span>
+          </a>
+        </div>
+      </div><!-- /col profesores -->
+
+      <!-- COLUMNA 2: blockquote institucional -->
+      <div class="col-lg-6 ca-fade-right ca-d2">
+        <figure class="celex-blockquote" role="figure" aria-label="Misión del CELEX">
+          <blockquote class="celex-blockquote__text">
+            "Formamos estudiantes con competencias lingüísticas de clase mundial, fomentando el pensamiento crítico y la apertura intercultural que exige el mundo contemporáneo. El CELEX es el puente entre la comunidad UAM y las culturas del mundo."
+          </blockquote>
+          <figcaption class="celex-blockquote__caption">
+            <img src="../celex5/imgs/logos/uam.png" alt="UAM Azcapotzalco" class="celex-blockquote__logo">
+            <div>
+              <span class="celex-blockquote__cap-title">Coordinación de Lenguas Extranjeras</span>
+              <span class="celex-blockquote__cap-sub">UAM Azcapotzalco · CELEX</span>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+
+    </div><!-- /row -->
+  </div><!-- /container -->
+</section>
+<!-- FIN: PLANTA ACADÉMICA -->
+
+
+<!-- ================================================================
+     INICIO: RECURSOS & TRÁMITES
+     Fondo negro · 3 cards con top-border de color
+     ================================================================ -->
+<section id="mod-recursos" class="celex-section celex-section--black">
+  <div class="container-xl">
+
+    <div class="row mb-5">
+      <div class="col-lg-8">
+        <p class="celex-eyebrow ca-fade-in">Servicios para alumnos</p>
+        <h2 class="celex-section-title ca-fade-up ca-d1">Recursos &amp; Trámites</h2>
+        <p class="mt-3 mb-0 ca-fade-up ca-d2" style="font-size:.9rem;line-height:1.75;max-width:520px;">
+          Todo lo que necesitas para gestionar tu situación académica en el CELEX.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-lg-4 ca-fade-up ca-d1">
+        <div class="celex-recurso-card celex-recurso-card--red">
+          <span class="celex-recurso-card__num" aria-hidden="true">01</span>
+          <div class="celex-recurso-card__icon" aria-hidden="true">
+            <i class="bi bi-patch-check" style="font-size:2.25rem;color:var(--celex-red);"></i>
+          </div>
+          <h3 class="celex-recurso-card__title">Liberar requisito de idioma</h3>
+          <p class="celex-recurso-card__desc">Información sobre los procesos de examen de comprensión de lectura y liberación formal del requisito de idioma para titulación UAM.</p>
+          <a href="#" class="celex-btn celex-btn--yellow mt-auto">
+            Ver proceso <span class="celex-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 ca-fade-up ca-d2">
+        <div class="celex-recurso-card celex-recurso-card--orange">
+          <span class="celex-recurso-card__num" aria-hidden="true">02</span>
+          <div class="celex-recurso-card__icon" aria-hidden="true">
+            <i class="bi bi-file-earmark-text" style="font-size:2.25rem;color:var(--celex-orange);"></i>
+          </div>
+          <h3 class="celex-recurso-card__title">Baja &amp; Resello de calificación</h3>
+          <p class="celex-recurso-card__desc">Trámites administrativos de baja de curso, resello y corrección de calificaciones. Conoce los plazos y documentación requerida.</p>
+          <a href="#" class="celex-btn celex-btn--yellow mt-auto">
+            Más información <span class="celex-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 ca-fade-up ca-d3">
+        <div class="celex-recurso-card celex-recurso-card--gray">
+          <span class="celex-recurso-card__num" aria-hidden="true">03</span>
+          <div class="celex-recurso-card__icon" aria-hidden="true">
+            <i class="bi bi-book" style="font-size:2.25rem;color:#777;"></i>
+          </div>
+          <h3 class="celex-recurso-card__title">Centro de Recursos / Autoacceso</h3>
+          <p class="celex-recurso-card__desc">Materiales de estudio independiente, préstamo de recursos y plataformas digitales de apoyo al aprendizaje de idiomas.</p>
+          <a href="#" class="celex-btn celex-btn--yellow mt-auto">
+            Acceder <span class="celex-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /row -->
+  </div><!-- /container -->
+</section>
+<!-- FIN: RECURSOS -->
+
+
+<!-- ================================================================
+     INICIO: FOOTER
+     Fondo oscuro · Logos, contacto, links del mega-menu
+     ================================================================ -->
+<footer id="mod-footer" class="celex-footer" role="contentinfo">
+  <div class="container-xl">
+    <div class="row g-5 py-5">
+
+      <!-- COL 1: identidad -->
+      <div class="col-lg-3 col-md-6">
+        <a href="/" class="celex-footer__logo-link mb-3" aria-label="CELEX — Inicio">
+          <img src="../celex5/imgs/logos/CELEX2.jpg" alt="CELEX UAM Azcapotzalco" class="celex-footer__logo">
+        </a>
+        <p class="celex-footer__tagline mt-3">
+          Centro de Lenguas Extranjeras<br>
+          Universidad Autónoma Metropolitana<br>
+          Unidad Azcapotzalco
+        </p>
+        <div class="d-flex gap-2 mt-4">
+          <a href="https://www.facebook.com/celexuamazcapotzalco" class="celex-footer__social" target="_blank" rel="noopener" aria-label="Facebook CELEX">
+            <i class="bi bi-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/celex_uam_azcapotzalco/" class="celex-footer__social" target="_blank" rel="noopener" aria-label="Instagram CELEX">
+            <i class="bi bi-instagram"></i>
+          </a>
+          <a href="#" class="celex-footer__social" aria-label="YouTube CELEX">
+            <i class="bi bi-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- COL 2: contacto -->
+      <div class="col-lg-3 col-md-6">
+        <h4 class="celex-footer__heading">Contacto</h4>
+        <address class="celex-footer__address">
+          <p><i class="bi bi-geo-alt me-2" style="color:var(--celex-yellow);"></i>Av. San Pablo No. 420, Col. Nueva El Rosario, C.P. 02128, Alcaldía Azcapotzalco, CDMX</p>
+          <p><i class="bi bi-building me-2" style="color:var(--celex-yellow);"></i>Edif. "C", 1er piso · Lun–Vie 8:00–17:00 h</p>
+          <p><i class="bi bi-envelope me-2" style="color:var(--celex-yellow);"></i><a href="mailto:lenguas-extranjeras@azc.uam.mx">lenguas-extranjeras@azc.uam.mx</a></p>
+          <p><i class="bi bi-telephone me-2" style="color:var(--celex-yellow);"></i><a href="tel:+525553189129">(55) 5318-9129</a> · <a href="tel:+525553189379">(55) 5318-9379</a></p>
+        </address>
+      </div>
+
+      <!-- COL 3: mi CELEX + idiomas -->
+      <div class="col-lg-3 col-md-6">
+        <h4 class="celex-footer__heading">Mi CELEX</h4>
+        <ul class="celex-footer__links mb-4">
+          <li><a href="#mod-horarios">Horarios del trimestre</a></li>
+          <li><a href="#">Solicitud de constancias</a></li>
+          <li><a href="#">Baja y Resello de calificación</a></li>
+          <li><a href="#">Resultados exámenes CL</a></li>
+          <li><a href="#">Distribución de matrículas</a></li>
+          <li><a href="#">¿Cómo liberar el requisito?</a></li>
+        </ul>
+        <h4 class="celex-footer__heading">Idiomas</h4>
+        <ul class="celex-footer__links">
+          <li><a href="#mod-idiomas">Inglés — Niveles A1–C1</a></li>
+          <li><a href="#mod-idiomas">Francés — Niveles A1–B2</a></li>
+          <li><a href="#mod-idiomas">Alemán — Niveles A1–B1</a></li>
+          <li><a href="#">Cursos Sabatinos</a></li>
+          <li><a href="#">Centro de Recursos</a></li>
+        </ul>
+      </div>
+
+      <!-- COL 4: convocatorias + celex -->
+      <div class="col-lg-3 col-md-6">
+        <h4 class="celex-footer__heading">Convocatorias</h4>
+        <ul class="celex-footer__links mb-4">
+          <li><a href="#">Convocatoria de ingreso</a></li>
+          <li><a href="#">Certificación CL — Inglés</a></li>
+          <li><a href="#">Certificación CL — Francés</a></li>
+          <li><a href="#">Certificación CL — Alemán</a></li>
+          <li><a href="#">Inglés Intensivo en Línea A2</a></li>
+        </ul>
+        <h4 class="celex-footer__heading">Institucional</h4>
+        <ul class="celex-footer__links">
+          <li><a href="#">Misión y objetivos</a></li>
+          <li><a href="#">Directorio</a></li>
+          <li><a href="#">Planta Académica</a></li>
+          <li><a href="#">Servicio Social</a></li>
+          <li><a href="#">Aviso de Privacidad</a></li>
+          <li><a href="https://www.azc.uam.mx/" target="_blank" rel="noopener">UAM Azcapotzalco</a></li>
+        </ul>
+      </div>
+
+    </div><!-- /row -->
+  </div><!-- /container -->
+
+  <!-- Barra inferior -->
+  <div class="celex-footer__bar">
+    <div class="container-xl">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 py-3">
+        <span class="celex-footer__copy">
+          &copy; 2026 Universidad Autónoma Metropolitana, Unidad Azcapotzalco
+        </span>
+        <span class="celex-footer__copy">
+          CELEX &mdash; Coordinación de Lenguas Extranjeras
+        </span>
+      </div>
+    </div>
+  </div>
+
+</footer>
+<!-- FIN: FOOTER -->
+
+
+<!-- Bootstrap Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* ================================================================
+   CELEX Scripts — vanilla JS, sin dependencias adicionales
+   ================================================================ */
+
+(function () {
+  'use strict';
+
+  /* ── 1. ANIMACIONES DE SCROLL (Intersection Observer) ── */
+  var animTargets = document.querySelectorAll(
+    '.ca-fade-up, .ca-fade-left, .ca-fade-right, .ca-fade-in, .ca-scale'
+  );
+
+  if ('IntersectionObserver' in window && animTargets.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('ca-is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    animTargets.forEach(function (el) { io.observe(el); });
+  } else {
+    /* Fallback: mostrar todo si el navegador no soporta IO */
+    animTargets.forEach(function (el) { el.classList.add('ca-is-visible'); });
+  }
+
+  /* ── 2. MEGA-MENU: abrir con hover en desktop ── */
+  function isMobile() { return window.innerWidth < 992; }
+
+  document.querySelectorAll('.celex-has-mega').forEach(function (item) {
+    var toggle = item.querySelector('[data-bs-toggle="dropdown"]');
+    var dropInstance = null;
+
+    item.addEventListener('mouseenter', function () {
+      if (isMobile() || !toggle) return;
+      dropInstance = bootstrap.Dropdown.getOrCreateInstance(toggle);
+      dropInstance.show();
+    });
+
+    item.addEventListener('mouseleave', function (e) {
+      if (isMobile() || !toggle) return;
+      var megamenu = item.querySelector('.celex-megamenu');
+      if (megamenu && megamenu.contains(e.relatedTarget)) return;
+      dropInstance = bootstrap.Dropdown.getInstance(toggle);
+      if (dropInstance) dropInstance.hide();
+    });
+
+    /* Cerrar al salir del mega-menu hacia afuera */
+    var menu = item.querySelector('.celex-megamenu');
+    if (menu) {
+      menu.addEventListener('mouseleave', function (e) {
+        if (isMobile()) return;
+        if (!item.contains(e.relatedTarget)) {
+          dropInstance = bootstrap.Dropdown.getInstance(toggle);
+          if (dropInstance) dropInstance.hide();
+        }
+      });
+    }
+  });
+
+  /* ── 3. SCROLL SUAVE + cerrar nav en mobile al hacer clic ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var headerH = document.querySelector('.celex-header')
+          ? document.querySelector('.celex-header').offsetHeight : 0;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - headerH - 16;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+
+        /* Cerrar dropdown mega-menu si está abierto */
+        document.querySelectorAll('.celex-has-mega [data-bs-toggle="dropdown"]').forEach(function (t) {
+          var d = bootstrap.Dropdown.getInstance(t);
+          if (d) d.hide();
+        });
+
+        /* Cerrar navbar collapse en mobile */
+        var collapse = document.getElementById('navCelex');
+        if (collapse && collapse.classList.contains('show')) {
+          bootstrap.Collapse.getInstance(collapse) && bootstrap.Collapse.getInstance(collapse).hide();
+        }
+      }
+    });
+  });
+
+  /* ── 4. NAV LINK ACTIVO según sección visible en scroll ── */
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.celex-nav-link');
+
+  function setActiveNav() {
+    var headerH = document.querySelector('.celex-header')
+      ? document.querySelector('.celex-header').offsetHeight + 32 : 80;
+    var scrollY = window.scrollY + headerH;
+
+    sections.forEach(function (sec) {
+      var top = sec.offsetTop;
+      var bottom = top + sec.offsetHeight;
+      if (scrollY >= top && scrollY < bottom) {
+        navLinks.forEach(function (link) {
+          link.classList.remove('active');
+          link.removeAttribute('aria-current');
+        });
+        var match = document.querySelector('.celex-nav-link[href="#' + sec.id + '"]');
+        if (match) {
+          match.classList.add('active');
+          match.setAttribute('aria-current', 'page');
+        }
+      }
+    });
+  }
+
+  window.addEventListener('scroll', setActiveNav, { passive: true });
+
+  /* ── 5. ANIMACIÓN INICIAL DEL HERO (no espera al IO) ── */
+  document.querySelectorAll('.celex-hero .ca-fade-up, .celex-hero .ca-fade-in, .celex-hero .ca-fade-left').forEach(function (el) {
+    setTimeout(function () { el.classList.add('ca-is-visible'); }, 100);
+  });
+
+})();
+</script>
+
+</body>
+</html>

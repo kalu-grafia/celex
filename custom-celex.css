@@ -1,0 +1,1376 @@
+/* ============================================================
+   CELEX · UAM Azcapotzalco · Homepage v2.0
+   Estilo basado en: conclusive-wonders-955078.framer.app (Denzil)
+   Stack: HTML5 · Bootstrap 5.3.8 · CSS personalizado
+   ============================================================ */
+
+/* ============================================================
+   INICIO: DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* Colores de marca — NO modificar */
+  --celex-yellow:        #F5C518;
+  --celex-yellow-light:  #FFF5C2;
+  --celex-orange:        #E87A2A;
+  --celex-orange-light:  #FEF0E0;
+  --celex-red:           #b31010;
+  --celex-dark:          #1A1A1A;
+  --celex-gray-dark:     #3D3D3D;
+  --celex-gray-bg:       #F4F4F2;
+  --celex-white:         #FFFFFF;
+
+  /* Tipografía (Inter = Denzil) */
+  --celex-font-sans:  'Inter', 'Segoe UI', system-ui, sans-serif;
+  --celex-font-mono:  'Fragment Mono', 'Consolas', monospace;
+
+  /* Escala tipográfica — Denzil usa clamp muy agresivos */
+  --type-hero:      clamp(2.5rem, 6vw, 6rem);
+  --type-display:   clamp(2rem, 4vw, 3.75rem);
+  --type-h2:        clamp(1.5rem, 3vw, 2.25rem);
+  --type-body:      1rem;
+  --type-small:     0.8125rem;
+  --type-label:     0.72rem;
+
+  /* Espaciado — Denzil usa 120px verticales */
+  --section-py:     8rem;
+  --section-py-md:  5rem;
+  --section-py-sm:  3.5rem;
+
+  /* Geometría Denzil */
+  --card-radius:    10px;
+  --btn-radius:     10px;
+
+  /* Sombra Denzil (muy sutil en reposo) */
+  --shadow-card:    0 0.6px 0.42px -1px rgba(0,0,0,.22),
+                    0 2.29px 1.6px  -2px rgba(0,0,0,.2),
+                    0 10px 7px      -3px rgba(0,0,0,.14);
+  --shadow-hover:   0 12px 48px rgba(0,0,0,.14);
+  --shadow-mega:    0 24px 60px rgba(0,0,0,.1);
+
+  /* Easing exacto de Denzil */
+  --ease:           cubic-bezier(0.44, 0, 0.56, 1);
+  --t-std:          0.38s cubic-bezier(0.44, 0, 0.56, 1);
+  --t-fast:         0.22s cubic-bezier(0.44, 0, 0.56, 1);
+  --t-slow:         0.65s cubic-bezier(0.44, 0, 0.56, 1);
+}
+/* FIN: DESIGN TOKENS */
+
+
+/* ============================================================
+   INICIO: BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--celex-font-sans);
+  font-size: var(--type-body);
+  color: var(--celex-dark);
+  background: var(--celex-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { transition: color var(--t-fast), opacity var(--t-fast); }
+a:not([class]) { color: var(--celex-dark); text-decoration: underline; }
+
+::selection { background: var(--celex-yellow); color: var(--celex-dark); }
+/* FIN: BASE */
+
+
+/* ============================================================
+   INICIO: SCROLL ANIMATIONS (Intersection Observer)
+   Clases aplicadas por JS al entrar al viewport.
+   Denzil usa fadeUp + slight horizontal slides.
+   ============================================================ */
+
+/* Estado inicial: invisible + desplazado */
+.ca-fade-up   { opacity: 0; transform: translateY(44px); }
+.ca-fade-left  { opacity: 0; transform: translateX(-44px); }
+.ca-fade-right { opacity: 0; transform: translateX(44px); }
+.ca-fade-in    { opacity: 0; transform: none; }
+.ca-scale      { opacity: 0; transform: scale(0.94); }
+
+/* Transición base para todos */
+.ca-fade-up, .ca-fade-left, .ca-fade-right, .ca-fade-in, .ca-scale {
+  transition: opacity var(--t-slow), transform var(--t-slow);
+  will-change: opacity, transform;
+}
+
+/* Estado visible — clase añadida por JS */
+.ca-is-visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Delays para animaciones en cascada */
+.ca-d1 { transition-delay: 0.08s; }
+.ca-d2 { transition-delay: 0.18s; }
+.ca-d3 { transition-delay: 0.28s; }
+.ca-d4 { transition-delay: 0.38s; }
+.ca-d5 { transition-delay: 0.48s; }
+.ca-d6 { transition-delay: 0.58s; }
+/* FIN: SCROLL ANIMATIONS */
+
+
+/* ============================================================
+   INICIO: COMPONENTES COMPARTIDOS
+   (Botones, badges, eyebrows — usados en múltiples módulos)
+   ============================================================ */
+
+/* — Eyebrow label (estilo Denzil: mono + uppercase + punto de color) — */
+.celex-eyebrow {
+  font-family: var(--celex-font-mono);
+  font-size: var(--type-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--celex-yellow);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.celex-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: var(--celex-yellow);
+  flex-shrink: 0;
+}
+
+/* — Título de sección — */
+.celex-section-title {
+  font-size: var(--type-display);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  color: var(--celex-dark);
+}
+
+/* — Botón base (spec exacta Denzil: 14px 20px, r-10, uppercase) — */
+.celex-btn {
+  font-family: var(--celex-font-sans);
+  font-size: var(--type-small);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 14px 22px;
+  border-radius: var(--btn-radius);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  transition: background var(--t-fast), color var(--t-fast),
+              box-shadow var(--t-fast), transform var(--t-fast);
+  white-space: nowrap;
+}
+.celex-btn:hover { transform: translateY(-2px); }
+
+.celex-btn--yellow { background: var(--celex-yellow); color: var(--celex-dark); }
+.celex-btn--yellow:hover {
+  background: #e2b500;
+  color: var(--celex-dark);
+  box-shadow: 0 8px 28px rgba(245,197,24,.40);
+}
+
+.celex-btn--dark { background: var(--celex-dark); color: var(--celex-yellow); }
+.celex-btn--dark:hover {
+  background: #2e2e2e;
+  color: var(--celex-yellow);
+  box-shadow: 0 8px 28px rgba(0,0,0,.30);
+}
+
+.celex-btn--ghost {
+  background: transparent;
+  color: var(--celex-dark);
+  border: 1.5px solid rgba(26,26,26,.25);
+}
+.celex-btn--ghost:hover {
+  background: var(--celex-dark);
+  color: var(--celex-white);
+  border-color: var(--celex-dark);
+}
+
+.celex-btn--ghost-light {
+  background: transparent;
+  color: var(--celex-white);
+  border: 1.5px solid rgba(255,255,255,.3);
+}
+.celex-btn--ghost-light:hover {
+  background: var(--celex-white);
+  color: var(--celex-dark);
+  border-color: var(--celex-white);
+}
+
+/* Arrow inline (texto puro, sin icon font) */
+.celex-arrow { display: inline-block; transition: transform var(--t-fast); }
+.celex-btn:hover .celex-arrow,
+a:hover .celex-arrow { transform: translateX(4px); }
+
+/* — Badges — */
+.celex-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  display: inline-block;
+  line-height: 1.4;
+}
+.celex-badge--dark         { background: var(--celex-dark); color: var(--celex-yellow); }
+.celex-badge--outline      { border: 1px solid #ccc; color: var(--celex-gray-dark); }
+.celex-badge--yellow       { background: var(--celex-yellow); color: var(--celex-dark); }
+.celex-badge--yellow-light { background: var(--celex-yellow-light); color: #6a5000; border: 1px solid rgba(245,197,24,.35); }
+.celex-badge--red          { background: var(--celex-red); color: #fff; }
+.celex-badge--orange       { background: var(--celex-orange); color: #fff; }
+
+/* — Divisor de sección (Denzil usa líneas finas) — */
+.celex-rule {
+  border: none;
+  border-top: 1px solid #e2e2e2;
+  margin: 0;
+}
+.celex-rule--dark { border-color: rgba(255,255,255,.1); }
+
+/* — Sección base — */
+.celex-section       { padding: var(--section-py) 0; }
+.celex-section--light { background: var(--celex-gray-bg); }
+.celex-section--black { background: #000; }
+.celex-section--dark  { background: var(--celex-dark); }
+
+/* Overrides de color en secciones oscuras */
+.celex-section--black .celex-section-title,
+.celex-section--dark  .celex-section-title { color: var(--celex-white); }
+.celex-section--black .celex-eyebrow,
+.celex-section--dark  .celex-eyebrow { color: var(--celex-yellow); }
+.celex-section--black p,
+.celex-section--dark  p { color: #999; }
+
+/* — Link-flecha al pie de secciones (estilo Denzil) — */
+.celex-link-arrow {
+  font-size: var(--type-small);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--celex-dark);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap var(--t-fast), color var(--t-fast);
+}
+.celex-link-arrow:hover { gap: 0.75rem; color: var(--celex-gray-dark); }
+.celex-link-arrow--light { color: var(--celex-white); }
+.celex-link-arrow--light:hover { color: var(--celex-yellow); }
+/* FIN: COMPONENTES COMPARTIDOS */
+
+
+/* ============================================================
+   INICIO: NAVBAR
+   ============================================================ */
+.celex-header {
+  position: sticky;
+  top: 0;
+  z-index: 1040;
+  background: var(--celex-white);
+}
+
+/* Barra institucional (logos) */
+.celex-topbar {
+  border-bottom: 1px solid #ebebeb;
+  padding: 0.45rem 0;
+  background: var(--celex-gray-bg);
+}
+.celex-topbar .container-xl {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.celex-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+.celex-logo-link { text-decoration: none; display: inline-flex; align-items: center; flex-shrink: 0; }
+.celex-logo            { height: 38px; width: auto; object-fit: contain; }
+.celex-logo--uam       { height: 38px; }
+.celex-logo--division  { height: 32px; }
+.celex-logo--celex     { height: 44px; }
+.celex-logo-sep {
+  width: 1px; height: 28px;
+  background: #cfcfcf;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Barra de nav principal */
+.celex-navbar-bar {
+  border-bottom: 1px solid #ebebeb;
+}
+.celex-navbar-bar .navbar {
+  padding: 0;
+  position: relative; /* necesario para el mega-menu */
+}
+
+/* Links de navegación */
+.celex-nav-link {
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  color: var(--celex-gray-dark) !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 1.1rem 0.9rem !important;
+  border-bottom: 2px solid transparent;
+  transition: color var(--t-fast), border-color var(--t-fast);
+  display: flex !important;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+.celex-nav-link:hover,
+.celex-nav-link.active,
+.celex-has-mega.show > .celex-nav-link {
+  color: var(--celex-dark) !important;
+  border-bottom-color: var(--celex-yellow);
+}
+/* Quitar flechita de Bootstrap en dropdown */
+.celex-nav-link.dropdown-toggle::after { display: none; }
+
+/* Indicador rojo para Convocatorias */
+.celex-nav-alert-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--celex-red);
+  flex-shrink: 0;
+  position: relative;
+}
+.celex-nav-alert-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid var(--celex-red);
+  animation: pulse-dot 1.8s ease infinite;
+}
+@keyframes pulse-dot {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(2.5); }
+}
+
+/* CTA "Ingresar" */
+.celex-btn-ingresar {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--celex-dark);
+  color: var(--celex-yellow) !important;
+  padding: 10px 20px;
+  border-radius: var(--btn-radius);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background var(--t-fast);
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+.celex-btn-ingresar:hover { background: var(--celex-gray-dark); color: var(--celex-yellow) !important; }
+
+/* Hamburger toggler */
+.celex-toggler {
+  border: 1.5px solid rgba(26,26,26,.2);
+  border-radius: 6px;
+  padding: 0.4rem 0.55rem;
+  margin-left: auto;
+}
+.celex-toggler:focus { box-shadow: none; outline: 2px solid var(--celex-yellow); }
+/* FIN: NAVBAR */
+
+
+/* ============================================================
+   INICIO: MEGA-MENU
+   ============================================================ */
+.celex-megamenu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 1050;
+  background: var(--celex-white);
+  border: none;
+  border-top: 3px solid var(--celex-yellow);
+  border-bottom: 1px solid #e8e8e8;
+  border-radius: 0 0 12px 12px;
+  box-shadow: var(--shadow-mega);
+  padding: 2.25rem 0 2.5rem;
+  animation: megaSlideDown 0.22s var(--ease);
+}
+@keyframes megaSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Heading de grupo dentro del mega-menu */
+.celex-mega-group {
+  margin-bottom: 1.5rem;
+}
+.celex-mega-group:last-child { margin-bottom: 0; }
+
+.celex-mega-heading {
+  font-family: var(--celex-font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--celex-yellow);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(245,197,24,.25);
+}
+
+/* Links del mega-menu */
+.celex-mega-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--celex-gray-dark);
+  text-decoration: none;
+  padding: 0.3rem 0;
+  transition: color var(--t-fast), padding-left var(--t-fast);
+  line-height: 1.4;
+}
+.celex-mega-link::before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 1.5px;
+  background: var(--celex-yellow);
+  transition: width var(--t-fast);
+  flex-shrink: 0;
+}
+.celex-mega-link:hover {
+  color: var(--celex-dark);
+  padding-left: 4px;
+}
+.celex-mega-link:hover::before { width: 14px; }
+
+/* Dot rojo para convocatorias urgentes */
+.celex-mega-link--urgent { color: var(--celex-red); }
+.celex-mega-link--urgent:hover { color: #8a0c0c; }
+.celex-mega-link--urgent::after {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--celex-red);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* Columna destacada dentro del mega-menu */
+.celex-mega-featured {
+  background: var(--celex-dark);
+  border-radius: var(--card-radius);
+  padding: 1.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.celex-mega-featured__tag {
+  font-family: var(--celex-font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--celex-yellow);
+  margin-bottom: 0.75rem;
+}
+.celex-mega-featured__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--celex-white);
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+.celex-mega-featured__desc {
+  font-size: 0.825rem;
+  color: #888;
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+
+/* Mobile: mega-menu como acordeón */
+@media (max-width: 991.98px) {
+  .celex-megamenu {
+    position: static !important;
+    width: 100% !important;
+    border-top: none !important;
+    border-left: 3px solid var(--celex-yellow);
+    border-radius: 0 0 8px 8px;
+    box-shadow: none !important;
+    padding: 1rem 1.25rem;
+    background: var(--celex-gray-bg);
+    animation: none;
+    margin-bottom: 0.25rem;
+  }
+  .celex-mega-featured { margin-top: 1rem; }
+  .celex-navbar-bar .navbar-collapse {
+    background: var(--celex-white);
+    border-top: 1px solid #ebebeb;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 0.5rem 0;
+  }
+  .celex-nav-link {
+    border-bottom: none !important;
+    padding: 0.7rem 1rem !important;
+  }
+  .celex-nav-link:hover { background: var(--celex-gray-bg); }
+  .celex-btn-ingresar {
+    display: block;
+    width: calc(100% - 2rem);
+    margin: 0.75rem 1rem;
+    justify-content: center;
+  }
+}
+@media (max-width: 767.98px) {
+  .celex-logo--division, .celex-logo-sep:first-of-type { display: none; }
+}
+/* FIN: MEGA-MENU */
+
+
+/* ============================================================
+   INICIO: HERO
+   ============================================================ */
+.celex-hero {
+  background: #000;
+  padding: var(--section-py) 0 calc(var(--section-py) * 0.9);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ruido de fondo sutil (Denzil usa texturas muy sutiles) */
+.celex-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+.celex-hero .container-xl { position: relative; z-index: 1; }
+
+/* Eyebrow del hero */
+.celex-hero__label {
+  font-family: var(--celex-font-mono);
+  font-size: 0.72rem;
+  color: var(--celex-yellow);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.celex-hero__label-pulse {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--celex-yellow);
+  flex-shrink: 0;
+  position: relative;
+}
+.celex-hero__label-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(245,197,24,.5);
+  animation: pulse-dot 2s ease infinite;
+}
+
+/* Headline masivo — la pieza central del diseño Denzil */
+.celex-hero__headline {
+  font-family: var(--celex-font-sans);
+  font-size: var(--type-hero);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--celex-white);
+  margin-bottom: 1.75rem;
+}
+.celex-hero__headline-accent { color: var(--celex-yellow); }
+
+/* Subtítulo */
+.celex-hero__subtitle {
+  font-size: 1.05rem;
+  color: #7a7a7a;
+  line-height: 1.8;
+  max-width: 460px;
+  margin-bottom: 0;
+}
+
+/* Divisor */
+.celex-hero__rule {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,.1);
+  margin: 2.25rem 0;
+}
+
+/* Grid de estadísticas */
+.celex-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.celex-stat {
+  padding: 0 1.25rem 0 0;
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+.celex-stat:first-child { padding-left: 0; }
+.celex-stat:last-child  { border-right: none; }
+
+.celex-stat__number {
+  font-family: var(--celex-font-mono);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--celex-yellow);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.celex-stat__label {
+  font-size: 0.68rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  display: block;
+  line-height: 1.4;
+}
+
+/* Indicador scroll (Denzil style: animado hacia abajo) */
+.celex-hero__scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  opacity: 0.35;
+  transition: opacity var(--t-fast);
+  z-index: 2;
+}
+.celex-hero__scroll:hover { opacity: 0.8; }
+.celex-hero__scroll-text {
+  font-family: var(--celex-font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--celex-white);
+  writing-mode: vertical-rl;
+}
+.celex-hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,.5));
+  animation: scroll-line 1.8s ease infinite;
+}
+@keyframes scroll-line {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@media (max-width: 991.98px) {
+  .celex-hero { min-height: auto; padding: var(--section-py-md) 0; }
+  .celex-stats-row { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .celex-stat { border-right: none; padding: 0; }
+  .celex-hero__scroll { display: none; }
+}
+@media (max-width: 767.98px) {
+  .celex-hero { padding: var(--section-py-sm) 0; }
+  .celex-hero__subtitle { max-width: 100%; }
+}
+/* FIN: HERO */
+
+
+/* ============================================================
+   INICIO: CAROUSEL
+   ============================================================ */
+.celex-carousel-wrap {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,.6);
+  position: relative;
+}
+
+.celex-slide {
+  height: 520px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Overlay tipo Denzil: gradiente bottom-up denso */
+.celex-slide__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.92) 0%,
+    rgba(0,0,0,.50) 40%,
+    rgba(0,0,0,.12) 100%
+  );
+}
+
+.celex-slide__content {
+  position: relative;
+  z-index: 2;
+  padding: 2.25rem 2.5rem;
+}
+.celex-slide__badge {
+  display: inline-block;
+  background: var(--celex-red);
+  color: #fff;
+  font-family: var(--celex-font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: 4px;
+  margin-bottom: 0.85rem;
+}
+.celex-slide__title {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+.celex-slide__subtitle {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,.65);
+  margin: 0;
+}
+
+/* Dots amarillos — override completo de Bootstrap */
+.celex-carousel-dots {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  display: flex;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+}
+.celex-carousel-dots [data-bs-target] {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: rgba(245,197,24,.35) !important;
+  border: none !important;
+  opacity: 1 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  transition: background var(--t-fast), transform var(--t-fast) !important;
+  overflow: hidden;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.celex-carousel-dots [data-bs-target].active,
+.celex-carousel-dots [data-bs-target]:hover {
+  background: var(--celex-yellow) !important;
+  transform: scale(1.4) !important;
+}
+
+/* Flechas de navegación */
+.celex-carousel-wrap .carousel-control-prev,
+.celex-carousel-wrap .carousel-control-next {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 50%;
+  top: 50%; bottom: auto;
+  transform: translateY(-50%);
+  opacity: 1;
+  transition: background var(--t-fast), border-color var(--t-fast);
+  margin: 0 1rem;
+}
+.celex-carousel-wrap .carousel-control-prev:hover,
+.celex-carousel-wrap .carousel-control-next:hover {
+  background: var(--celex-yellow);
+  border-color: var(--celex-yellow);
+}
+.celex-carousel-wrap .carousel-control-prev-icon,
+.celex-carousel-wrap .carousel-control-next-icon { width: 16px; height: 16px; }
+
+@media (max-width: 991.98px) { .celex-slide { height: 380px; } }
+@media (max-width: 767.98px) { .celex-slide { height: 280px; } }
+/* FIN: CAROUSEL */
+
+
+/* ============================================================
+   INICIO: FRANJA DE TEXTO ANIMADO (Denzil marquee)
+   ============================================================ */
+.celex-marquee-bar {
+  background: var(--celex-yellow);
+  padding: 0.9rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.celex-marquee-track {
+  display: inline-flex;
+  gap: 0;
+  animation: marquee 28s linear infinite;
+}
+.celex-marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.celex-marquee-item {
+  font-family: var(--celex-font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--celex-dark);
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+.celex-marquee-item::after {
+  content: '·';
+  font-size: 1.2rem;
+  line-height: 1;
+}
+/* FIN: FRANJA DE TEXTO ANIMADO */
+
+
+/* ============================================================
+   INICIO: ALERTAS & CONVOCATORIAS
+   ============================================================ */
+
+/* Tarjetas de convocatoria — Denzil style: flat + left accent */
+.celex-alerta-card {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--celex-white);
+  border-radius: var(--card-radius);
+  border: 1px solid #eaeaea;
+  border-left: 3px solid var(--celex-red);
+  transition: box-shadow var(--t-std), transform var(--t-std), border-color var(--t-std);
+  cursor: pointer;
+}
+.celex-alerta-card + .celex-alerta-card { margin-top: 1rem; }
+.celex-alerta-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+  border-color: var(--celex-red);
+}
+
+.celex-alerta-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 0.1rem;
+}
+.celex-alerta-date__box {
+  background: var(--celex-red);
+  color: #fff;
+  border-radius: 6px;
+  padding: 7px 9px;
+  text-align: center;
+  line-height: 1;
+  min-width: 44px;
+  margin-bottom: 0.4rem;
+}
+.celex-alerta-date__num   { font-size: 1.2rem; font-weight: 700; display: block; }
+.celex-alerta-date__month { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-top: 1px; }
+.celex-alerta-date__cat   { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #aaa; text-align: center; }
+
+.celex-alerta-body__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--celex-dark);
+  margin-bottom: 0.35rem;
+  line-height: 1.3;
+}
+.celex-alerta-body__desc {
+  font-size: 0.825rem;
+  color: #777;
+  line-height: 1.65;
+  margin-bottom: 0.65rem;
+}
+.celex-alerta-body__cta {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--celex-red);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: gap var(--t-fast), color var(--t-fast);
+}
+.celex-alerta-body__cta:hover { gap: 0.6rem; color: #8a0c0c; }
+/* FIN: ALERTAS */
+
+
+/* ============================================================
+   INICIO: TIMELINE
+   ============================================================ */
+.celex-timeline { position: relative; padding-left: 0; }
+
+.celex-timeline__head {
+  font-family: var(--celex-font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--celex-yellow);
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(245,197,24,.22);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.celex-timeline__item {
+  display: flex;
+  gap: 1.1rem;
+  padding-bottom: 1.75rem;
+  position: relative;
+}
+/* Línea vertical conectora */
+.celex-timeline__item:not(.celex-timeline__item--last)::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 18px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(245,197,24,.3), rgba(245,197,24,.05));
+}
+
+.celex-timeline__dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--celex-yellow);
+  flex-shrink: 0;
+  margin-top: 4px;
+  box-shadow: 0 0 0 4px rgba(245,197,24,.18);
+  position: relative;
+  z-index: 1;
+  transition: box-shadow var(--t-fast);
+}
+.celex-timeline__item:hover .celex-timeline__dot {
+  box-shadow: 0 0 0 8px rgba(245,197,24,.12);
+}
+
+.celex-timeline__date {
+  display: block;
+  font-family: var(--celex-font-mono);
+  font-size: 0.68rem;
+  color: var(--celex-yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+.celex-timeline__text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--celex-dark);
+  line-height: 1.45;
+}
+/* FIN: TIMELINE */
+
+
+/* ============================================================
+   INICIO: CARDS DE IDIOMAS
+   ============================================================ */
+.celex-idioma-card {
+  background: var(--celex-white);
+  border: 1px solid #e5e5e5;
+  border-radius: var(--card-radius);
+  padding: 2.25rem 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--t-std), transform var(--t-std), border-color var(--t-std);
+}
+/* Línea superior de acento (Denzil: top border on hover) */
+.celex-idioma-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--celex-yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-std);
+}
+.celex-idioma-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-5px); border-color: transparent; }
+.celex-idioma-card:hover::before { transform: scaleX(1); }
+
+.celex-idioma-card__flag { font-size: 2.75rem; line-height: 1; margin-bottom: 1.1rem; }
+.celex-idioma-card__name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--celex-dark);
+  margin-bottom: 0.25rem;
+}
+.celex-idioma-card__cefr {
+  font-family: var(--celex-font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--celex-yellow);
+  margin-bottom: 1.1rem;
+}
+.celex-idioma-card__levels {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+.celex-idioma-card__levels li {
+  font-size: 0.84rem;
+  color: #666;
+  padding-left: 1.1rem;
+  position: relative;
+  line-height: 1.45;
+}
+.celex-idioma-card__levels li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  font-size: 0.7rem;
+  color: var(--celex-yellow);
+  top: 0.05em;
+}
+.celex-idioma-card__badges { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+/* FIN: IDIOMAS */
+
+
+/* ============================================================
+   INICIO: CARDS DE HORARIOS
+   ============================================================ */
+.celex-horario-card {
+  background: var(--celex-white);
+  border: 1px solid #e5e5e5;
+  border-radius: var(--card-radius);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: box-shadow var(--t-std), transform var(--t-std);
+  position: relative;
+  overflow: hidden;
+}
+.celex-horario-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--celex-yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-std);
+}
+.celex-horario-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+.celex-horario-card:hover::after { transform: scaleX(1); }
+
+.celex-horario-card__num {
+  font-family: var(--celex-font-mono);
+  font-size: 3rem;
+  font-weight: 400;
+  color: rgba(245,197,24,.18);
+  line-height: 1;
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  pointer-events: none;
+  transition: color var(--t-std);
+}
+.celex-horario-card:hover .celex-horario-card__num { color: rgba(245,197,24,.35); }
+
+.celex-horario-card__icon  { font-size: 2.25rem; margin-bottom: 1rem; line-height: 1; }
+.celex-horario-card__name  {
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--celex-dark); margin-bottom: 0.5rem; letter-spacing: -0.01em;
+}
+.celex-horario-card__desc  { font-size: 0.85rem; color: #777; line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
+/* FIN: HORARIOS */
+
+
+/* ============================================================
+   INICIO: PLANTA ACADÉMICA
+   ============================================================ */
+.celex-teacher-card {
+  background: var(--celex-gray-bg);
+  border: 1px solid #e5e5e5;
+  border-radius: var(--card-radius);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  transition: box-shadow var(--t-std), transform var(--t-std), background var(--t-std);
+  cursor: default;
+}
+.celex-teacher-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-3px);
+  background: var(--celex-white);
+}
+
+.celex-teacher-card__avatar {
+  width: 68px; height: 68px;
+  border-radius: 50%;
+  background: var(--celex-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 0.9rem;
+  transition: box-shadow var(--t-std);
+  overflow: hidden;
+}
+.celex-teacher-card:hover .celex-teacher-card__avatar {
+  box-shadow: 0 0 0 4px rgba(245,197,24,.3);
+}
+
+.celex-teacher-card__name     { display: block; font-size: 0.875rem; font-weight: 700; color: var(--celex-dark); }
+.celex-teacher-card__lang     { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--celex-yellow); margin-top: 0.2rem; }
+.celex-teacher-card__spec     { display: block; font-size: 0.7rem; color: #aaa; margin-top: 0.1rem; }
+
+/* Blockquote institucional — Denzil: borde grueso izquierdo en acento */
+.celex-blockquote {
+  border-left: 5px solid var(--celex-yellow);
+  padding: 2.5rem 2rem 2.5rem 2.75rem;
+  background: var(--celex-yellow-light);
+  border-radius: 0 var(--card-radius) var(--card-radius) 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.celex-blockquote__text {
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.72;
+  color: var(--celex-dark);
+  letter-spacing: -0.01em;
+  flex: 1;
+}
+.celex-blockquote__caption {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+.celex-blockquote__logo { height: 36px; width: auto; opacity: 0.75; }
+.celex-blockquote__cap-title { font-size: 0.825rem; font-weight: 700; color: var(--celex-dark); display: block; }
+.celex-blockquote__cap-sub   { font-size: 0.72rem; color: #999; display: block; }
+/* FIN: PLANTA ACADÉMICA */
+
+
+/* ============================================================
+   INICIO: RECURSOS & TRÁMITES
+   ============================================================ */
+.celex-recurso-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--card-radius);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: background var(--t-std), transform var(--t-std), box-shadow var(--t-std);
+}
+.celex-recurso-card:hover {
+  background: rgba(255,255,255,.09);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+/* Top accent border */
+.celex-recurso-card--red    { border-top: 3px solid var(--celex-red); }
+.celex-recurso-card--orange { border-top: 3px solid var(--celex-orange); }
+.celex-recurso-card--gray   { border-top: 3px solid #555; }
+
+/* Número decorativo de fondo (Denzil: grandes números de sección) */
+.celex-recurso-card__num {
+  font-family: var(--celex-font-mono);
+  font-size: 5rem;
+  color: rgba(255,255,255,.04);
+  line-height: 1;
+  position: absolute;
+  bottom: 1rem; right: 1.5rem;
+  pointer-events: none;
+  font-weight: 400;
+  transition: color var(--t-std);
+}
+.celex-recurso-card:hover .celex-recurso-card__num { color: rgba(255,255,255,.07); }
+
+.celex-recurso-card__icon  { font-size: 2rem; margin-bottom: 1.25rem; line-height: 1; }
+.celex-recurso-card__title { font-size: 1.05rem; font-weight: 700; color: var(--celex-white); margin-bottom: 0.75rem; line-height: 1.3; letter-spacing: -0.01em; }
+.celex-recurso-card__desc  { font-size: 0.85rem; color: #888; line-height: 1.72; flex: 1; margin-bottom: 1.75rem; }
+/* FIN: RECURSOS */
+
+
+/* ============================================================
+   INICIO: FOOTER
+   ============================================================ */
+.celex-footer {
+  background: var(--celex-dark);
+  color: var(--celex-gray-bg);
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.celex-footer__logo-link { display: inline-block; }
+.celex-footer__logo { height: 46px; width: auto; object-fit: contain; opacity: .8; }
+
+.celex-footer__tagline { font-size: 0.825rem; color: #666; line-height: 1.65; margin-top: 0.85rem; }
+
+.celex-footer__heading {
+  font-family: var(--celex-font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--celex-yellow);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(245,197,24,.2);
+}
+
+.celex-footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.celex-footer__links a {
+  font-size: 0.875rem;
+  color: #888;
+  text-decoration: none;
+  transition: color var(--t-fast), padding-left var(--t-fast);
+  display: block;
+  padding-left: 0;
+}
+.celex-footer__links a:hover { color: var(--celex-yellow); padding-left: 6px; }
+
+.celex-footer__address {
+  font-style: normal;
+  font-size: 0.85rem;
+  color: #777;
+  line-height: 1.8;
+}
+.celex-footer__address a { color: #888; text-decoration: none; transition: color var(--t-fast); }
+.celex-footer__address a:hover { color: var(--celex-yellow); }
+
+.celex-footer__social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  color: #888;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
+}
+.celex-footer__social:hover {
+  background: var(--celex-yellow);
+  color: var(--celex-dark);
+  border-color: var(--celex-yellow);
+}
+
+/* Barra inferior */
+.celex-footer__bar {
+  background: rgba(0,0,0,.4);
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.celex-footer__copy { font-size: 0.7rem; color: #4a4a4a; }
+/* FIN: FOOTER */
+
+
+/* ============================================================
+   INICIO: RESPONSIVE
+   ============================================================ */
+@media (max-width: 991.98px) {
+  :root {
+    --section-py: var(--section-py-md);
+  }
+  .celex-blockquote {
+    border-radius: var(--card-radius);
+    margin-top: 2rem;
+  }
+  .celex-stats-row { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 1rem; }
+  .celex-stat { border-right: none; padding-right: 0; }
+}
+
+@media (max-width: 767.98px) {
+  :root {
+    --section-py: var(--section-py-sm);
+  }
+  .celex-alerta-card { grid-template-columns: 1fr; gap: 0.75rem; }
+  .celex-alerta-date { flex-direction: row; align-items: center; }
+  .celex-alerta-date__cat { margin-left: 0.5rem; }
+  .celex-blockquote {
+    border-left: none;
+    border-top: 5px solid var(--celex-yellow);
+    border-radius: var(--card-radius);
+    padding: 1.75rem;
+  }
+  .celex-footer .row > [class*="col"] { text-align: center; }
+  .celex-footer__links { align-items: center; }
+  .celex-footer__links a { padding-left: 0 !important; }
+  .celex-blockquote__caption { justify-content: center; }
+  .celex-marquee-bar { display: none; }
+  .celex-hero__scroll { display: none; }
+}
+/* FIN: RESPONSIVE */
